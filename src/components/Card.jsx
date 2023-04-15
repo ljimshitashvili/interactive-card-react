@@ -2,6 +2,10 @@ import styled from "styled-components";
 import cardLogo from "/public/card-logo.svg";
 
 function Card({ name, cardNumber, month, year, cvc }) {
+  const formatStringWithSpaces = (string) => {
+    const regex = /(.{4})/g;
+    return string.replace(regex, "$1 ");
+  };
   return (
     <CardContainer>
       <div className="backCard">
@@ -10,7 +14,7 @@ function Card({ name, cardNumber, month, year, cvc }) {
       <div className="frontCard">
         <img src={cardLogo} alt="card logo" />
         <div>
-          <h2>{cardNumber}</h2>
+          <h2>{formatStringWithSpaces(cardNumber)}</h2>
           <div>
             <p>{name}</p>
             <p>

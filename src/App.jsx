@@ -4,7 +4,7 @@ import Card from "./components/Card";
 import Input from "./components/Input";
 
 function App() {
-  const [cardNumber, setcardNumber] = useState("0000 0000 0000 0000");
+  const [cardNumber, setcardNumber] = useState("0000000000000000");
   const [name, setname] = useState("jane applessed");
   const [month, setmonth] = useState("00");
   const [year, setyear] = useState("00");

@@ -15,9 +15,18 @@ function Input({ setname, setcardNumber, setmonth, setyear, setcvc }) {
       <div>
         <h1>card number</h1>
         <input
+          minLength="16"
+          maxLength="16"
           type="text"
           placeholder="e.g. Jane Applessed"
-          onChange={(e) => setcardNumber(e.target.value)}
+          onChange={(e) => {
+            setcardNumber(e.target.value);
+            {
+              e.target.length > 16
+                ? (e.target = e.target.slice(0, 16))
+                : e.target.value;
+            }
+          }}
         />
       </div>
       <div className="lastSection">
@@ -28,7 +37,7 @@ function Input({ setname, setcardNumber, setmonth, setyear, setcvc }) {
             id="month"
             onChange={(e) => setmonth(e.target.value)}
           >
-            <option value="" disabled selected>
+            <option defaultValue value="" disabled>
               MM
             </option>
             <option value="1">01</option>
@@ -52,7 +61,7 @@ function Input({ setname, setcardNumber, setmonth, setyear, setcvc }) {
             required
             onChange={(e) => setyear(e.target.value)}
           >
-            <option value="" disabled selected>
+            <option defaultValue value="" disabled>
               YY
             </option>
             <option value="23">2023</option>
@@ -67,9 +76,18 @@ function Input({ setname, setcardNumber, setmonth, setyear, setcvc }) {
           <h1>cvc</h1>
           <input
             id="cvc"
+            minLength="3"
+            maxLength="3"
             type="text"
             placeholder="e.g. 123"
-            onChange={(e) => setcvc(e.target.value)}
+            onChange={(e) => {
+              setcvc(e.target.value);
+              {
+                e.target.length > 3
+                  ? (e.target = e.target.slice(0, 3))
+                  : e.target.value;
+              }
+            }}
           />
         </div>
       </div>
