@@ -1,7 +1,16 @@
 import { useState } from "react";
 import styled from "styled-components";
 
-function Input({ setname, setcardNumber, setmonth, setyear, setcvc }) {
+function Input({
+  setname,
+  cardNumber,
+  setcardNumber,
+  setmonth,
+  setyear,
+  setcvc,
+}) {
+  const thanksCard = () => {};
+
   return (
     <Container>
       <div>
@@ -28,6 +37,7 @@ function Input({ setname, setcardNumber, setmonth, setyear, setcvc }) {
             }
           }}
         />
+        <ErrorLength>Must contain 16 digits!</ErrorLength>
       </div>
       <div className="lastSection">
         <div>
@@ -91,12 +101,22 @@ function Input({ setname, setcardNumber, setmonth, setyear, setcvc }) {
           />
         </div>
       </div>
-      <button>Confirm</button>
+      <button onClick={thanksCard}>Confirm</button>
     </Container>
   );
 }
 
 export default Input;
+
+const ErrorLength = styled.h6`
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #ff5050;
+  margin-top: 8px;
+  text-transform: none;
+  display: ${(props) => (props.cardnumber !== "16" ? "none" : "block")};
+`;
 
 const Container = styled.div`
   display: flex;

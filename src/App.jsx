@@ -2,6 +2,7 @@ import { useState } from "react";
 import styled from "styled-components";
 import Card from "./components/Card";
 import Input from "./components/Input";
+import Thanks from "./components/Thanks";
 
 function App() {
   const [cardNumber, setcardNumber] = useState("0000000000000000");
@@ -9,6 +10,7 @@ function App() {
   const [month, setmonth] = useState("00");
   const [year, setyear] = useState("00");
   const [cvc, setcvc] = useState("000");
+  const [showThanks, setshowThanks] = useState(false);
 
   return (
     <Body>
@@ -19,13 +21,18 @@ function App() {
         year={year}
         cvc={cvc}
       />
-      <Input
-        setname={setname}
-        setcardNumber={setcardNumber}
-        setmonth={setmonth}
-        setyear={setyear}
-        setcvc={setcvc}
-      />
+      {showThanks ? (
+        <Thanks />
+      ) : (
+        <Input
+          cardNumber={cardNumber}
+          setname={setname}
+          setcardNumber={setcardNumber}
+          setmonth={setmonth}
+          setyear={setyear}
+          setcvc={setcvc}
+        />
+      )}
     </Body>
   );
 }
